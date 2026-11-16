@@ -1,0 +1,21 @@
+# Windows thumbnail and system caches
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Organizer runtime logs and temporary outputs
+*.log
+organize_history.log
+*.tmp
+*.crdownload
+*.part
+
+# Sample staged directories (if tested inside repo folder)
+Duplicates/
+Archive_Old/
+Junk_Temp/
+
+# Editor and IDE directories
+.vscode/
+.idea/
