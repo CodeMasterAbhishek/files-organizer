@@ -33,7 +33,6 @@ A modular Windows batch script designed to organize, clean, and manage cluttered
 
 ## Getting Started
 
-1. Place `Organize_Downloads.bat` in your target directory (e.g. `Downloads`).
-2. Optionally edit `custom_rules.txt` to define custom extension mappings.
-3. Double-click `Organize_Downloads.bat` or run it from Command Prompt / PowerShell.
-4. Select a menu option to organize or clean your files.
+1. Place `Organize_Downloads.bat` in your target directory (e.g. `Downloads`, `Desktop`, or `Documents`).
+2. Double-click `Organize_Downloads.bat` or run it from Command Prompt / PowerShell.
+3. Select an organization mode from the interactive menu (if you choose Custom Rules, a starter `custom_rules.txt` file is generated automatically).

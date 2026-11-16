@@ -10,6 +10,7 @@ organize_history.log
 *.tmp
 *.crdownload
 *.part
+custom_rules.txt
 
 # Sample staged directories (if tested inside repo folder)
 Duplicates/
