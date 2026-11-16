@@ -509,7 +509,7 @@ echo.
 echo [*] Scanning for browser duplicate downloads...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$dir = $env:TARGET_DIR; $scope = $env:DUP_SCOPE; $log = $env:LOG_FILE;" ^
-  "$excluded = @('Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
+  "$excluded = @('Organize_Downloads_Windows.bat','Organize_Downloads_macOS.command','Organize_Downloads_Linux.sh','Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
   "if ($scope -eq 'root') {" ^
   "  $files = Get-ChildItem -LiteralPath $dir -File | Where-Object { $excluded -notcontains $_.Name };" ^
   "} else {" ^
@@ -558,7 +558,7 @@ echo.
 echo [*] Analyzing file hashes for exact bit-for-bit duplicates...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$dir = $env:TARGET_DIR; $scope = $env:DUP_SCOPE; $log = $env:LOG_FILE;" ^
-  "$excluded = @('Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
+  "$excluded = @('Organize_Downloads_Windows.bat','Organize_Downloads_macOS.command','Organize_Downloads_Linux.sh','Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
   "if ($scope -eq 'root') {" ^
   "  $files = Get-ChildItem -LiteralPath $dir -File | Where-Object { $excluded -notcontains $_.Name };" ^
   "} else {" ^
@@ -616,7 +616,7 @@ echo.
 echo [*] Scanning duplicates for report...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$dir = $env:TARGET_DIR; $scope = $env:DUP_SCOPE;" ^
-  "$excluded = @('Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
+  "$excluded = @('Organize_Downloads_Windows.bat','Organize_Downloads_macOS.command','Organize_Downloads_Linux.sh','Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
   "if ($scope -eq 'root') {" ^
   "  $files = Get-ChildItem -LiteralPath $dir -File | Where-Object { $excluded -notcontains $_.Name };" ^
   "} else {" ^
@@ -761,7 +761,7 @@ echo.
 echo [*] Scanning for files older than %OLD_DAYS% days...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$dir = $env:TARGET_DIR; $days = [int]$env:OLD_DAYS; $scope = $env:ARCH_SCOPE; $fmt = $env:ARCH_FMT; $log = $env:LOG_FILE;" ^
-  "$excluded = @('Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
+  "$excluded = @('Organize_Downloads_Windows.bat','Organize_Downloads_macOS.command','Organize_Downloads_Linux.sh','Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
   "if ($scope -eq 'root') {" ^
   "  $files = Get-ChildItem -LiteralPath $dir -File | Where-Object { $excluded -notcontains $_.Name };" ^
   "} else {" ^
@@ -819,7 +819,7 @@ echo.
 echo [*] Scanning for old files preview...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$dir = $env:TARGET_DIR; $days = [int]$env:OLD_DAYS;" ^
-  "$excluded = @('Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
+  "$excluded = @('Organize_Downloads_Windows.bat','Organize_Downloads_macOS.command','Organize_Downloads_Linux.sh','Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
   "$files = Get-ChildItem -LiteralPath $dir -File -Recurse | Where-Object { $excluded -notcontains $_.Name -and $_.FullName -notmatch '[\\/]Archive_Old[\\/]' };" ^
   "$now = Get-Date;" ^
   "$old = @($files | Where-Object { ($now - $_.LastWriteTime).Days -gt $days });" ^
@@ -885,7 +885,7 @@ echo.
 echo [*] Scanning for temporary, partial, and 0-byte files...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$dir = $env:TARGET_DIR; $log = $env:LOG_FILE;" ^
-  "$excluded = @('Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
+  "$excluded = @('Organize_Downloads_Windows.bat','Organize_Downloads_macOS.command','Organize_Downloads_Linux.sh','Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
   "$junkExts = @('.crdownload', '.part', '.opdownload', '.partial', '.tmp', '.download');" ^
   "$files = Get-ChildItem -LiteralPath $dir -File -Recurse | Where-Object {" ^
   "  $excluded -notcontains $_.Name -and $_.FullName -notmatch '[\\/]Junk_Temp[\\/]' -and $_.FullName -notmatch '[\\/]Duplicates[\\/]'" ^
@@ -922,7 +922,7 @@ echo.
 echo [*] Scanning for junk files report...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$dir = $env:TARGET_DIR;" ^
-  "$excluded = @('Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
+  "$excluded = @('Organize_Downloads_Windows.bat','Organize_Downloads_macOS.command','Organize_Downloads_Linux.sh','Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
   "$junkExts = @('.crdownload', '.part', '.opdownload', '.partial', '.tmp', '.download');" ^
   "$files = Get-ChildItem -LiteralPath $dir -File -Recurse | Where-Object {" ^
   "  $excluded -notcontains $_.Name -and $_.FullName -notmatch '[\\/]Junk_Temp[\\/]' -and $_.FullName -notmatch '[\\/]Duplicates[\\/]'" ^
@@ -1190,7 +1190,7 @@ echo [*] Calculating disk usage and scanning space hogs...
 echo.
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$dir = $env:TARGET_DIR;" ^
-  "$excluded = @('Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
+  "$excluded = @('Organize_Downloads_Windows.bat','Organize_Downloads_macOS.command','Organize_Downloads_Linux.sh','Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
   "$files = Get-ChildItem -LiteralPath $dir -File -Recurse | Where-Object { $excluded -notcontains $_.Name };" ^
   "$totalFiles = $files.Count;" ^
   "$totalBytes = ($files | Measure-Object -Property Length -Sum).Sum;" ^
@@ -1324,7 +1324,7 @@ echo [*] Analyzing filenames for renaming preview...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$dir = $env:TARGET_DIR; $mode = $env:REN_MODE; $scope = $env:REN_SCOPE; $log = $env:LOG_FILE;" ^
   "$findTxt = $env:FIND_TXT; $repTxt = $env:REPLACE_TXT;" ^
-  "$excluded = @('Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
+  "$excluded = @('Organize_Downloads_Windows.bat','Organize_Downloads_macOS.command','Organize_Downloads_Linux.sh','Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
   "if ($scope -eq 'root') {" ^
   "  $files = Get-ChildItem -LiteralPath $dir -File | Where-Object { $excluded -notcontains $_.Name };" ^
   "} else {" ^
@@ -1378,7 +1378,7 @@ echo [*] Applying renames...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$dir = $env:TARGET_DIR; $mode = $env:REN_MODE; $scope = $env:REN_SCOPE; $log = $env:LOG_FILE;" ^
   "$findTxt = $env:FIND_TXT; $repTxt = $env:REPLACE_TXT;" ^
-  "$excluded = @('Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
+  "$excluded = @('Organize_Downloads_Windows.bat','Organize_Downloads_macOS.command','Organize_Downloads_Linux.sh','Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
   "if ($scope -eq 'root') {" ^
   "  $files = Get-ChildItem -LiteralPath $dir -File | Where-Object { $excluded -notcontains $_.Name };" ^
   "} else {" ^
@@ -1496,7 +1496,7 @@ echo [*] Searching files...
 echo.
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$dir = $env:TARGET_DIR; $q = $env:FND_QUERY; $type = $env:FND_TYPE;" ^
-  "$excluded = @('Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
+  "$excluded = @('Organize_Downloads_Windows.bat','Organize_Downloads_macOS.command','Organize_Downloads_Linux.sh','Organize_Downloads.bat','organize_history.log','custom_rules.txt','preview_sim.tmp');" ^
   "$files = Get-ChildItem -LiteralPath $dir -File -Recurse | Where-Object { $excluded -notcontains $_.Name };" ^
   "if ($type -eq 'keyword') {" ^
   "  $matched = @($files | Where-Object { $_.Name -like ('*{0}*' -f $q) });" ^
@@ -2095,12 +2095,11 @@ rem --- Mode 3: Direct Extension ---
 :ProcessExtension
 set "F_EXT=%~x1"
 if "%F_EXT%"=="" (
-    set "DEST_DIR=No_Extension"
-) else (
-    call :SetCleanExt "%F_EXT%"
-    set "DEST_DIR=%CLEAN_EXT%"
+    call :MoveFile "%~1" "No_Extension"
+    goto :eof
 )
-call :MoveFile "%~1" "%DEST_DIR%"
+call :SetCleanExt "%F_EXT%"
+call :MoveFile "%~1" "%CLEAN_EXT%"
 goto :eof
 
 rem --- Mode 4: By Date (Year & Month) ---
@@ -2283,12 +2282,17 @@ set "FNAME=%~nx1"
 set "BASE_NAME=%~n1"
 set "EXT_NAME=%~x1"
 
-if "%IS_PREVIEW%"=="1" (
-    echo %FNAME%>> "%TEMP_SIM%"
-    echo  [PREVIEW] %FNAME% -^> %DEST_DIR%\
-    set /a MOVED_COUNT+=1
-    goto :eof
-)
+if /i "%FNAME%"=="Organize_Downloads_Windows.bat" goto :eof
+if /i "%FNAME%"=="Organize_Downloads.bat" goto :eof
+if /i "%FNAME%"=="Organize_Downloads_macOS.command" goto :eof
+if /i "%FNAME%"=="Organize_Downloads_Linux.sh" goto :eof
+if /i "%FNAME%"=="README.md" goto :eof
+if /i "%FNAME%"==".gitignore" goto :eof
+if /i "%FNAME%"=="organize_history.log" goto :eof
+if /i "%FNAME%"=="custom_rules.txt" goto :eof
+if /i "%FNAME%"=="preview_sim.tmp" goto :eof
+
+if "%IS_PREVIEW%"=="1" goto :MoveFilePreview
 
 if not exist "%DEST_DIR%" mkdir "%DEST_DIR%"
 
@@ -2307,5 +2311,11 @@ if exist "%DEST_DIR%\%NEW_FNAME%" set /a dup_idx+=1 & goto :dup_loop
 move "%SRC%" "%DEST_DIR%\%NEW_FNAME%" >nul
 echo %DEST_DIR%\%NEW_FNAME%^|%SRC%>> "%LOG_FILE%"
 echo  [+] Moved (renamed duplicate): %FNAME% -^> %DEST_DIR%\%NEW_FNAME%
+set /a MOVED_COUNT+=1
+goto :eof
+
+:MoveFilePreview
+echo %FNAME%>> "%TEMP_SIM%"
+echo  [PREVIEW] %FNAME% -^> %DEST_DIR%\
 set /a MOVED_COUNT+=1
 goto :eof

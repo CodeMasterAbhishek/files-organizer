@@ -4,12 +4,20 @@ ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
 # Organizer runtime logs and temporary outputs
 *.log
 organize_history.log
 *.tmp
+preview_sim.tmp
 *.crdownload
 *.part
+*.download
 custom_rules.txt
 
 # Sample staged directories (if tested inside repo folder)
